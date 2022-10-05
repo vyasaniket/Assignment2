@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.awt.Image;
+
 /**
  *
  * @author Admin
@@ -20,6 +22,7 @@ public class EmployeeDetails {
     private String title;
     private int number;
     private String email;
+    private String photo;
 
     public String getName() {
         return name;
@@ -99,6 +102,14 @@ public class EmployeeDetails {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public String getPhoto(){
+        return photo;
+    }
+    
+    public void setPhoto(String Photo){
+        this.photo = Photo;
     }
    
     @Override
