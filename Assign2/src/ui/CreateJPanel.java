@@ -69,7 +69,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         txtEmail = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
         btnUpload = new javax.swing.JButton();
-        txtPhoto = new javax.swing.JTextField();
+        txtPhotoPath = new javax.swing.JTextField();
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -167,9 +167,9 @@ public class CreateJPanel extends javax.swing.JPanel {
             }
         });
 
-        txtPhoto.addActionListener(new java.awt.event.ActionListener() {
+        txtPhotoPath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhotoActionPerformed(evt);
+                txtPhotoPathActionPerformed(evt);
             }
         });
 
@@ -227,17 +227,16 @@ public class CreateJPanel extends javax.swing.JPanel {
                                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(66, 66, 66)
-                                .addComponent(lblEmail1)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnUpload)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnSave)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblEmail1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtPhotoPath, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnUpload)))))
                         .addGap(0, 175, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(289, 289, 289)
-                .addComponent(btnSave)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,10 +279,10 @@ public class CreateJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmail1)
                     .addComponent(btnUpload)
-                    .addComponent(txtPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                    .addComponent(txtPhotoPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(btnSave)
-                .addContainerGap(440, Short.MAX_VALUE))
+                .addContainerGap(438, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -335,7 +334,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         String title = txtPositionTitle.getText();
         int number = Integer.parseInt(txtNumber.getText());
         String email = txtEmail.getText();
-        String photo = txtPhoto.getText();
+//        Image photo = txtPhoto.getPhoto();
         
         EmployeeDetails ed = history.addNewEmployees();
         
@@ -349,7 +348,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         ed.setTitle(title);
         ed.setNumber(number);
         ed.setEmail(email);
-        ed.setPhoto(photo);
+        ed.setPhoto(pic);
         
         JOptionPane.showMessageDialog(this, "New Employee added");
         
@@ -368,34 +367,35 @@ public class CreateJPanel extends javax.swing.JPanel {
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         // TODO add your handling code here:
-        JFileChooser choose = new JFileChooser();
-        
-        FileNameExtensionFilter file_ext = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
-        choose.addChoosableFileFilter(file_ext);
-        
-        int dialog = choose.showOpenDialog(null);
-        
-        if(dialog == JFileChooser.APPROVE_OPTION){
-            File selected_file = choose.getSelectedFile();
-            String file_path = selected_file.getAbsolutePath();
-            System.out.println("file_path: "+file_path);
-            txtPhoto.setText(file_path);
-//        JFileChooser chooser = new JFileChooser();
-//        chooser.showOpenDialog(null);
-//        File f = chooser.getSelectedFile();
+//        JFileChooser choose = new JFileChooser();
 //        
+//        FileNameExtensionFilter file_ext = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+//        choose.addChoosableFileFilter(file_ext);
 //        
-//        try {
-//                image = ImageIO.read(f);
-//                pic = image.getScaledInstance(120, 120, 120);
-//        } catch (IOException ex) {
-//        }
-    
+//        int dialog = choose.showOpenDialog(null);
+//        
+//        if(dialog == JFileChooser.APPROVE_OPTION){
+//            File selected_file = choose.getSelectedFile();
+//            String file_path = selected_file.getAbsolutePath();
+//            System.out.println("file_path: "+file_path);
+//            txtPhotoPath.setText(file_path);
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filePath = f.getAbsolutePath();
+        
+        
+        try {
+                image = ImageIO.read(f);
+                pic = image.getScaledInstance(120, 120, 120);
+        } catch (IOException ex) {
+        }
+        txtPhotoPath.setText(filePath);
     }//GEN-LAST:event_btnUploadActionPerformed
-    }
-    private void txtPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhotoActionPerformed
+    
+    private void txtPhotoPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhotoPathActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhotoActionPerformed
+    }//GEN-LAST:event_txtPhotoPathActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -421,7 +421,7 @@ public class CreateJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtLevel;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNumber;
-    private javax.swing.JTextField txtPhoto;
+    private javax.swing.JTextField txtPhotoPath;
     private javax.swing.JTextField txtPositionTitle;
     private javax.swing.JTextField txtStartDate;
     private javax.swing.JTextField txtTeamInfo;

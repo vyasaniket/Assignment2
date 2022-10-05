@@ -22,7 +22,7 @@ public class EmployeeDetails {
     private String title;
     private int number;
     private String email;
-    private String photo;
+    private Image photo;
 
     public String getName() {
         return name;
@@ -104,11 +104,11 @@ public class EmployeeDetails {
         this.email = email;
     }
     
-    public String getPhoto(){
+    public Image getPhoto(){
         return photo;
     }
     
-    public void setPhoto(String Photo){
+    public void setPhoto(Image Photo){
         this.photo = Photo;
     }
    
