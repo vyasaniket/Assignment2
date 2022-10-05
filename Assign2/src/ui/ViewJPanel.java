@@ -435,7 +435,15 @@ public class ViewJPanel extends javax.swing.JPanel {
 //            txtPositionTitle.setText(selectedEmployee.getTitle());
 //            txtNumber.setText(String.valueOf(selectedEmployee.getNumber()));
 //            txtEmail.setText(selectedEmployee.getEmail());
-        
+            selectedEmployee.setName(name);
+            selectedEmployee.setEmployeeID(Integer.parseInt(employeeID));
+            selectedEmployee.setAge(Integer.parseInt(age));
+            selectedEmployee.setGender(gender);
+            selectedEmployee.setStartDate(startDate);
+            selectedEmployee.setLevel(level);
+            selectedEmployee.setTeamInfo(teamInfo);
+            selectedEmployee.setTitle(title);
+            selectedEmployee.setEmail(email);
             //update value
             model.setValueAt(name, tblEmployees.getSelectedRow(), 0);
             model.setValueAt(employeeID, tblEmployees.getSelectedRow(), 1);
@@ -452,16 +460,16 @@ public class ViewJPanel extends javax.swing.JPanel {
             
             populateTable();
             
-        txtName.setText("");
-        txtEmployeeID.setText("");
-        txtAge.setText("");
-        txtGender.setText("");
-        txtStartDate.setText("");
-        txtLevel.setText("");
-        txtTeamInfo.setText("");
-        txtPositionTitle.setText("");
-        txtNumber.setText("");
-        txtEmail.setText("");
+            txtName.setText("");
+            txtEmployeeID.setText("");
+            txtAge.setText("");
+            txtGender.setText("");
+            txtStartDate.setText("");
+            txtLevel.setText("");
+            txtTeamInfo.setText("");
+            txtPositionTitle.setText("");
+            txtNumber.setText("");
+            txtEmail.setText("");
         }
         
        
