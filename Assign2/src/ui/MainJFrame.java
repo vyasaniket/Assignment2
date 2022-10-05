@@ -73,7 +73,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(btnCreate)
                 .addGap(18, 18, 18)
                 .addComponent(btnView)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addContainerGap(706, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(controlPanel);
@@ -82,11 +82,11 @@ public class MainJFrame extends javax.swing.JFrame {
         workArea.setLayout(workAreaLayout);
         workAreaLayout.setHorizontalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 683, Short.MAX_VALUE)
+            .addGap(0, 676, Short.MAX_VALUE)
         );
         workAreaLayout.setVerticalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 437, Short.MAX_VALUE)
+            .addGap(0, 888, Short.MAX_VALUE)
         );
 
         splitPane.setRightComponent(workArea);
@@ -97,15 +97,15 @@ public class MainJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(splitPane, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addComponent(splitPane)
+                .addContainerGap())
         );
 
         pack();
