@@ -24,7 +24,7 @@
                           <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
                           <Component id="lblTitle" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnView" min="-2" max="-2" attributes="0"/>
@@ -39,11 +39,14 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="lblStartDate" min="-2" max="-2" attributes="0"/>
                           <Component id="lblAge" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblName" min="-2" max="-2" attributes="0"/>
                           <Component id="lblTeamInfo" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="lblPositionTitle1" min="-2" max="-2" attributes="0"/>
                           <Component id="lblNumber" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblEmail1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="Photo" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblName" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -84,7 +87,8 @@
                                   <Component id="txtEmail" min="-2" pref="161" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="txtPhoto" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPhoto" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Component id="txtSearch" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="164" max="32767" attributes="0"/>
                   </Group>
@@ -105,6 +109,8 @@
                   <Component id="btnView" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnDelete" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -144,11 +150,11 @@
                   <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblEmail1" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPhoto" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Photo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPhoto" alignment="3" min="-2" pref="108" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="228" max="32767" attributes="0"/>
+              <EmptySpace pref="220" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -256,7 +262,7 @@
         <Property name="text" type="java.lang.String" value="Email :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblEmail1">
+    <Component class="javax.swing.JLabel" name="Photo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Photo :"/>
       </Properties>
@@ -336,20 +342,17 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JPanel" name="txtPhoto">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-    </Container>
+    <Component class="javax.swing.JLabel" name="txtPhoto">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtSearch">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSearchKeyReleased"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Search :"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>
