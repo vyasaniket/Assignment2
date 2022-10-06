@@ -13,14 +13,14 @@ import java.awt.Image;
 public class EmployeeDetails {
     
     private String name;
-    private int employeeID;
+    private String employeeID;
     private int age;
     private String gender;
     private String startDate;
     private String level;
     private String teamInfo;
     private String title;
-    private int number;
+    private String number;
     private String email;
     private Image photo;
 
@@ -32,11 +32,11 @@ public class EmployeeDetails {
         this.name = name;
     }
 
-    public int getEmployeeID() {
+    public String getEmployeeID() {
         return employeeID;
     }
 
-    public void setEmployeeID(int employeeID) {
+    public void setEmployeeID(String employeeID) {
         this.employeeID = employeeID;
     }
 
@@ -88,11 +88,11 @@ public class EmployeeDetails {
         this.title = title;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

@@ -89,17 +89,17 @@ public class ViewJPanel extends javax.swing.JPanel {
 
         tblEmployees.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Name", "EmployeeID", "Number"
+                "Name", "EmployeeID", "Number", "Email"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -227,7 +227,6 @@ public class ViewJPanel extends javax.swing.JPanel {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnUpdate)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnView)
@@ -429,14 +428,14 @@ public class ViewJPanel extends javax.swing.JPanel {
         if(tblEmployees.getSelectedRowCount()==1){
             
             String name = txtName.getText();
-            String employeeID = String.valueOf((txtEmployeeID.getText()));
+            String employeeID = txtEmployeeID.getText();
             String age = String.valueOf(txtAge.getText());
             String gender = txtGender.getText();
             String startDate = txtStartDate.getText();
             String level = txtLevel.getText();
             String teamInfo = txtTeamInfo.getText();
             String title = txtPositionTitle.getText();
-            String number = String.valueOf(txtNumber.getText());
+            String number = txtNumber.getText();
             String email = txtEmail.getText();
 //            txtName.setText(selectedEmployee.getName());
 //            txtEmployeeID.setText(String.valueOf(selectedEmployee.getEmployeeID()));
@@ -449,13 +448,14 @@ public class ViewJPanel extends javax.swing.JPanel {
 //            txtNumber.setText(String.valueOf(selectedEmployee.getNumber()));
 //            txtEmail.setText(selectedEmployee.getEmail());
             selectedEmployee.setName(name);
-            selectedEmployee.setEmployeeID(Integer.parseInt(employeeID));
+            selectedEmployee.setEmployeeID(employeeID);
             selectedEmployee.setAge(Integer.parseInt(age));
             selectedEmployee.setGender(gender);
             selectedEmployee.setStartDate(startDate);
             selectedEmployee.setLevel(level);
             selectedEmployee.setTeamInfo(teamInfo);
             selectedEmployee.setTitle(title);
+            selectedEmployee.setNumber(number);
             selectedEmployee.setEmail(email);
             //update value
             model.setValueAt(name, tblEmployees.getSelectedRow(), 0);
@@ -467,7 +467,7 @@ public class ViewJPanel extends javax.swing.JPanel {
 //            model.setValueAt(teamInfo, tblEmployees.getSelectedRow(), 6);
 //            model.setValueAt(title, tblEmployees.getSelectedRow(), 7);
             model.setValueAt(number, tblEmployees.getSelectedRow(), 2);
-//            model.setValueAt(email, tblEmployees.getSelectedRow(), 9);
+            model.setValueAt(email, tblEmployees.getSelectedRow(), 3);
             
             JOptionPane.showMessageDialog(this, "Updated Successfully...!");
             
@@ -536,10 +536,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         
         for(EmployeeDetails ed : history.getHistory()){
             
-            Object[] row = new Object[3];
+            Object[] row = new Object[4];
             row[0] = ed;
             row[1] = ed.getEmployeeID();
             row[2] = ed.getNumber();
+            row[3] = ed.getEmail();
             
             model.addRow(row);
         }

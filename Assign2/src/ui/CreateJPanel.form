@@ -50,15 +50,15 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="txtName" min="-2" pref="161" max="-2" attributes="0"/>
-                                      <EmptySpace pref="95" max="32767" attributes="0"/>
+                                      <EmptySpace pref="186" max="32767" attributes="0"/>
                                       <Component id="lblEmployeeID" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="txtStartDate" min="-2" pref="161" max="-2" attributes="0"/>
-                                          <Component id="txtAge" min="-2" pref="161" max="-2" attributes="0"/>
-                                          <Component id="txtTeamInfo" alignment="1" min="-2" pref="161" max="-2" attributes="0"/>
-                                          <Component id="txtNumber" alignment="1" min="-2" pref="161" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="txtAge" pref="161" max="32767" attributes="0"/>
+                                          <Component id="txtTeamInfo" alignment="1" pref="161" max="32767" attributes="0"/>
+                                          <Component id="txtNumber" alignment="1" pref="161" max="32767" attributes="0"/>
+                                          <Component id="txtStartDate" alignment="1" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -92,10 +92,15 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="175" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="84" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="txtStartDate1" min="-2" pref="161" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -119,11 +124,13 @@
                   <Component id="txtGender" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblStartDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtStartDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblLevel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtLevel" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblStartDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblLevel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtLevel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="txtStartDate" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -149,7 +156,9 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnSave" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="438" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="txtStartDate1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="398" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -226,6 +235,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtName">
       <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNameFocusLost"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNameActionPerformed"/>
       </Events>
     </Component>
@@ -235,15 +245,20 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtAge">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtAgeFocusLost"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAgeKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtGender">
       <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtGenderFocusLost"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtGenderActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtStartDate">
+    <Component class="javax.swing.JTextField" name="txtStartDate1">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtStartDateActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtStartDate1ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLevel">
@@ -263,11 +278,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtNumber">
       <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNumberFocusLost"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNumberActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmail">
       <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtEmailFocusLost"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailActionPerformed"/>
       </Events>
     </Component>
@@ -291,6 +308,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPhotoPathActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="txtStartDate">
     </Component>
   </SubComponents>
 </Form>
