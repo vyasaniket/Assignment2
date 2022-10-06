@@ -5,6 +5,7 @@
 package model;
 
 import java.awt.Image;
+import java.util.Date;
 
 /**
  *
@@ -16,13 +17,14 @@ public class EmployeeDetails {
     private String employeeID;
     private int age;
     private String gender;
-    private String startDate;
+    private Date startDate;
     private String level;
     private String teamInfo;
     private String title;
     private String number;
     private String email;
     private Image photo;
+    private String date;
 
     public String getName() {
         return name;
@@ -56,11 +58,11 @@ public class EmployeeDetails {
         this.gender = gender;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
@@ -115,5 +117,9 @@ public class EmployeeDetails {
     @Override
     public String toString(){
         return name;
+    }
+
+    public String setDate() {
+        return date;
     }
 }

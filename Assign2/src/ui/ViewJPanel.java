@@ -6,6 +6,7 @@ package ui;
 
 
 import java.awt.Image;
+import java.util.Date;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -367,7 +368,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         txtEmployeeID.setText(String.valueOf(selectedEmployee.getEmployeeID()));
         txtAge.setText(String.valueOf(selectedEmployee.getAge()));
         txtGender.setText(selectedEmployee.getGender());
-        txtStartDate.setText(selectedEmployee.getStartDate());
+        txtStartDate.setText(String.valueOf(selectedEmployee.getStartDate()));
         txtLevel.setText(selectedEmployee.getLevel());
         txtTeamInfo.setText(selectedEmployee.getTeamInfo());
         txtPositionTitle.setText(selectedEmployee.getTitle());
@@ -431,7 +432,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             String employeeID = txtEmployeeID.getText();
             String age = String.valueOf(txtAge.getText());
             String gender = txtGender.getText();
-            String startDate = txtStartDate.getText();
+//            String startDate = String.valueOf(txtStartDate.getText());
             String level = txtLevel.getText();
             String teamInfo = txtTeamInfo.getText();
             String title = txtPositionTitle.getText();
@@ -451,7 +452,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             selectedEmployee.setEmployeeID(employeeID);
             selectedEmployee.setAge(Integer.parseInt(age));
             selectedEmployee.setGender(gender);
-            selectedEmployee.setStartDate(startDate);
+//            selectedEmployee.setStartDate(Date.));
             selectedEmployee.setLevel(level);
             selectedEmployee.setTeamInfo(teamInfo);
             selectedEmployee.setTitle(title);
