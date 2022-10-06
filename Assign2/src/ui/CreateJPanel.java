@@ -8,10 +8,10 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import model.EmployeeDetailHistory;
 import model.EmployeeDetails;
 
@@ -61,7 +61,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         txtEmployeeID = new javax.swing.JTextField();
         txtAge = new javax.swing.JTextField();
         txtGender = new javax.swing.JTextField();
-        txtStartDate = new javax.swing.JTextField();
+        txtStartDate1 = new javax.swing.JTextField();
         txtLevel = new javax.swing.JTextField();
         txtTeamInfo = new javax.swing.JTextField();
         txtPositionTitle = new javax.swing.JTextField();
@@ -70,6 +70,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         btnSave = new javax.swing.JButton();
         btnUpload = new javax.swing.JButton();
         txtPhotoPath = new javax.swing.JTextField();
+        txtStartDate = new com.toedter.calendar.JDateChooser();
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -99,6 +100,11 @@ public class CreateJPanel extends javax.swing.JPanel {
 
         lblEmail1.setText("Photo :");
 
+        txtName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNameFocusLost(evt);
+            }
+        });
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
@@ -111,15 +117,31 @@ public class CreateJPanel extends javax.swing.JPanel {
             }
         });
 
+        txtAge.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtAgeFocusLost(evt);
+            }
+        });
+        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAgeKeyTyped(evt);
+            }
+        });
+
+        txtGender.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtGenderFocusLost(evt);
+            }
+        });
         txtGender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGenderActionPerformed(evt);
             }
         });
 
-        txtStartDate.addActionListener(new java.awt.event.ActionListener() {
+        txtStartDate1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStartDateActionPerformed(evt);
+                txtStartDate1ActionPerformed(evt);
             }
         });
 
@@ -141,12 +163,22 @@ public class CreateJPanel extends javax.swing.JPanel {
             }
         });
 
+        txtNumber.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNumberFocusLost(evt);
+            }
+        });
         txtNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumberActionPerformed(evt);
             }
         });
 
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
@@ -204,14 +236,14 @@ public class CreateJPanel extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
                                         .addComponent(lblEmployeeID))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtTeamInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(txtAge, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                            .addComponent(txtTeamInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                            .addComponent(txtNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                            .addComponent(txtStartDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblGender, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -235,8 +267,12 @@ public class CreateJPanel extends javax.swing.JPanel {
                                         .addComponent(txtPhotoPath, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnUpload)))))
-                        .addGap(0, 175, Short.MAX_VALUE)))
+                        .addGap(0, 84, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtStartDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(145, 145, 145))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,11 +292,12 @@ public class CreateJPanel extends javax.swing.JPanel {
                     .addComponent(lblGender)
                     .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStartDate)
-                    .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLevel)
-                    .addComponent(txtLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblStartDate)
+                        .addComponent(lblLevel)
+                        .addComponent(txtLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTeamInfo)
@@ -282,7 +319,9 @@ public class CreateJPanel extends javax.swing.JPanel {
                     .addComponent(txtPhotoPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnSave)
-                .addContainerGap(438, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(txtStartDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(398, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -294,9 +333,9 @@ public class CreateJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGenderActionPerformed
 
-    private void txtStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStartDateActionPerformed
+    private void txtStartDate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStartDate1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtStartDateActionPerformed
+    }//GEN-LAST:event_txtStartDate1ActionPerformed
 
     private void txtEmployeeIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeIDActionPerformed
         // TODO add your handling code here:
@@ -325,14 +364,14 @@ public class CreateJPanel extends javax.swing.JPanel {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         String name = txtName.getText();
-        int employeeID = Integer.parseInt(txtEmployeeID.getText());
+        String employeeID = txtEmployeeID.getText();
         int age = Integer.parseInt(txtAge.getText());
         String gender = txtGender.getText();
-        String startDate = txtStartDate.getText();
+        String startDate = txtStartDate1.getText();
         String level = txtLevel.getText();
         String teamInfo = txtTeamInfo.getText();
         String title = txtPositionTitle.getText();
-        int number = Integer.parseInt(txtNumber.getText());
+        String number = txtNumber.getText();
         String email = txtEmail.getText();
 //        Image photo = txtPhoto.getPhoto();
         
@@ -349,6 +388,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         ed.setNumber(number);
         ed.setEmail(email);
         ed.setPhoto(pic);
+       
         
         JOptionPane.showMessageDialog(this, "New Employee added");
         
@@ -356,12 +396,13 @@ public class CreateJPanel extends javax.swing.JPanel {
         txtEmployeeID.setText("");
         txtAge.setText("");
         txtGender.setText("");
-        txtStartDate.setText("");
+        txtStartDate.setDate(null);
         txtLevel.setText("");
         txtTeamInfo.setText("");
         txtPositionTitle.setText("");
         txtNumber.setText("");
         txtEmail.setText("");
+        txtPhotoPath.setText("");
       
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -397,6 +438,55 @@ public class CreateJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPhotoPathActionPerformed
 
+    private void txtAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyTyped
+        // TODO add your handling code here:
+//        if(!Pattern.matches("^[0-9]*[1-9][0-9]*$",txtAge.getText())){
+//            JOptionPane.showMessageDialog(this, "Please enter proper number");
+//        }
+    }//GEN-LAST:event_txtAgeKeyTyped
+
+    private void txtAgeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAgeFocusLost
+        // TODO add your handling code here:
+        if(!Pattern.matches("^[0-9]*[1-9][0-9]*$",txtAge.getText())){
+            JOptionPane.showMessageDialog(this, "Please enter proper Age");
+    }//GEN-LAST:event_txtAgeFocusLost
+    }
+    private void txtNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumberFocusLost
+        // TODO add your handling code here:
+         if(!Pattern.matches("^(\\+\\d{1,3}( )?)?((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$" 
+      + "|^(\\+\\d{1,3}( )?)?(\\d{3}[ ]?){2}\\d{3}$" 
+      + "|^(\\+\\d{1,3}( )?)?(\\d{3}[ ]?)(\\d{2}[ ]?){2}\\d{2}$",txtNumber.getText())){
+            JOptionPane.showMessageDialog(this, "Please enter proper Number");
+         }
+    }//GEN-LAST:event_txtNumberFocusLost
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        // TODO add your handling code here:
+        
+                if(!Pattern.matches("^[a-zA-Z0-9_+&*-]+(?:\\."+
+                            "[a-zA-Z0-9_+&*-]+)*@" +
+                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                            "A-Z]{2,7}$",txtEmail.getText())){
+                    JOptionPane.showMessageDialog(this, "Please enter proper Email");
+                }   
+        
+    }//GEN-LAST:event_txtEmailFocusLost
+
+    private void txtNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusLost
+        // TODO add your handling code here:
+        
+         if(!Pattern.matches("[a-zA-z]+([ '-][a-zA-Z]+)*",txtName.getText())){
+            JOptionPane.showMessageDialog(this, "Please enter proper Name");
+        }      
+    }//GEN-LAST:event_txtNameFocusLost
+
+    private void txtGenderFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGenderFocusLost
+        // TODO add your handling code here:
+        if(!Pattern.matches("[a-zA-z]+([ '-][a-zA-Z]+)*",txtGender.getText())){
+            JOptionPane.showMessageDialog(this, "Please enter proper Gender");
+        }   
+    }//GEN-LAST:event_txtGenderFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSave;
@@ -423,7 +513,8 @@ public class CreateJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtNumber;
     private javax.swing.JTextField txtPhotoPath;
     private javax.swing.JTextField txtPositionTitle;
-    private javax.swing.JTextField txtStartDate;
+    private com.toedter.calendar.JDateChooser txtStartDate;
+    private javax.swing.JTextField txtStartDate1;
     private javax.swing.JTextField txtTeamInfo;
     // End of variables declaration//GEN-END:variables
 }
